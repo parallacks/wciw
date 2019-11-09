@@ -4,7 +4,11 @@ const express = require('express');
 
 const app = express();
 
-const guide_box_search = require( './guide-box/guide-box-search');
+const key = '639305f8ebc10c932cc333d6657ee8e9963db0c5'
+
+import guide_box_search from './guide-box/guide-box-search'
+
+import guide_box_http from './guide-box/guide-box-api-http'
 
 
 /*
@@ -28,18 +32,50 @@ const guide_box_search = require( './guide-box/guide-box-search');
 */
 
 app.get('/api/search/:type/:query', (req, res) => {
+    console.log("hit this")
     let field = req.query.field || 'title'
     let precision = req.query.precision || 'fuzzy'
     let id_type = req.query.id_type || null
+    let movie_ids = []
+    let movie_data = []
     if(req.params.type === 'movie' || req.params.type === 'show'){
-        res.send(guide_box_search.search_show_or_movie(req.params.type, req.params.field, req.params.query));
+        guide_box_http.api_movie_show_search(`http://api-public.guidebox.com/v2/search?api_key=${key}&type=${req.params.type}&field=${field}&query=${req.params.query}`)
+        .then(response => {
+            movie_data = await get_results(response)
+            console.log(movie_data)
+            res.json(movie_data)
+        })
+        .catch(error => {
+            res.send(error)
+        })
+        // console.log(`Type: ${req.params.type}\n field: ${field}\n Query: ${req.params.query}`)
+        // console.log(results);
+        // res.send(results);
     }else if (req.params.type === 'channel' || req.params.type === 'person'){
-
+        res.send(guide_box_search.search_channel_or_person(req.params.type, req.params.field, req.params.query))
     }else{
         res.status(500).send('Sorry invalid type');
     }
 })
+async function get_results(response){
+    let movie_data=[]
+    for (let result in response.results){
+        console.log(response.results[result].id)
+        movie_ids.push(response.results[result].id)
+        guide_box_http.api_movie_search(`http://api-public.guidebox.com/v2/movies/${response.results[result].id}?api_key=${key}`)
+        .then(response => {
+            // console.log(response)
+            movie_data.push(response)
+        })
+    }
+    return movie_data
+         
+}
 
+app.get('/api', (req, res) =>{
+    console.log("hit general");
+    res.send("Hey gurl");
+})
 
 /*
  * GET /api/shows
