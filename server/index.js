@@ -6,8 +6,6 @@ const app = express();
 
 const key = '639305f8ebc10c932cc333d6657ee8e9963db0c5'
 
-import guide_box_search from './guide-box/guide-box-search'
-
 import guide_box_http from './guide-box/guide-box-api-http'
 
 
@@ -36,14 +34,48 @@ app.get('/api/search/:type/:query', (req, res) => {
     let field = req.query.field || 'title'
     let precision = req.query.precision || 'fuzzy'
     let id_type = req.query.id_type || null
-    let movie_ids = []
+    // let movie_ids = []
     let movie_data = []
     if(req.params.type === 'movie' || req.params.type === 'show'){
-        guide_box_http.api_movie_show_search(`http://api-public.guidebox.com/v2/search?api_key=${key}&type=${req.params.type}&field=${field}&query=${req.params.query}`)
+        guide_box_http.api_movie_show_search(req.params.type, field, req.params.query)
         .then(response => {
-            movie_data = await get_results(response)
-            console.log(movie_data)
-            res.json(movie_data)
+            // console.log('here')
+            // console.log(get_results(response))
+            let movie_data =[]
+            var fetches = []
+            for (let result in response.results){
+                // console.log(response.results[result].id)
+                // let movie_ids.push(response.results[result].id)
+                fetches.push(
+                guide_box_http.api_movie_search(response.results[result].id)
+                .then(response => {
+                    // console.log(response)
+                    let movie = {
+                        id: response.id,
+                        title: response.title,
+                        poster_small: response.poster_120x171,
+                        poster_medium: response.poster_240x342,
+                        poster_large: response.poster_400x570,
+                        free_web_sources: response.free_web_sources,
+                        free_ios_sources: response.free_ios_sources,
+                        free_android_sources: response.free_android_sources,
+                        subscription_web_sources: response.subscription_web_sources,
+                        subscription_ios_sources: response.subscription_ios_sources,
+                        subscription_android_sources: response.subscription_android_sources,
+                        purchase_web_sources: response.purchase_web_sources,
+                        purchase_ios_sources: response.purchase_ios_sources,
+                        purchase_android_sources: response.purchase_android_sources
+                    }
+                    console.log("Hey")
+                    console.log(movie)
+                    movie_data.push(movie)
+                })
+                );
+            }
+            Promise.all(fetches).then(function() {
+                // console.log(movie_data)
+                res.send(movie_data)
+            })
         })
         .catch(error => {
             res.send(error)
@@ -57,20 +89,35 @@ app.get('/api/search/:type/:query', (req, res) => {
         res.status(500).send('Sorry invalid type');
     }
 })
-async function get_results(response){
-    let movie_data=[]
-    for (let result in response.results){
-        console.log(response.results[result].id)
-        movie_ids.push(response.results[result].id)
-        guide_box_http.api_movie_search(`http://api-public.guidebox.com/v2/movies/${response.results[result].id}?api_key=${key}`)
-        .then(response => {
-            // console.log(response)
-            movie_data.push(response)
-        })
-    }
-    return movie_data
-         
+
+function get_results(response){
+    
 }
+
+
+// let url = ["https://www.freecodecamp.org", "https://www.test.de/, http://www.test2.com"];
+//   let array = new Array;
+//   var fetches = [];
+//   for (let i = 0; i < url.length; i++) {
+//     console.log(url[i]);
+//     fetches.push(
+//       fetch(url[i])
+//       .then(res => {return res.text(); })
+//       .then(res => {
+//             let reg = /\<meta name="description" content\=\"(.+?)\"/;
+//             res = res.match(reg);
+//             array.push(res);
+//             console.log(res);
+//           }
+//       )
+//       .catch(status, err => {return console.log(status, err);})
+//     );
+//   }
+//   Promise.all(fetches).then(function() {
+//     console.log (array.length);
+//   });
+//   }
+
 
 app.get('/api', (req, res) =>{
     console.log("hit general");
