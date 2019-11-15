@@ -1,0 +1,26 @@
+.component-search-result-list {
+  margin:-128px 0 0 128px;
+  height: auto;
+  position: relative;
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  left:0;
+}
+
+.component-search-result-list img:hover {
+  background-color: #eee;
+}
+
+.component-search-result-list img {
+  width: 64px;
+  height: 64px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.component-search-result-list:hover .info {
+  display: inline-block;
+}
