@@ -1,8 +1,7 @@
 {
-  "name": "emoji-search",
+  "name": "where-can-i-watch",
   "version": "0.1.0",
   "license": "MIT",
-  "homepage": "http://ahfarmer.github.io/emoji-search",
   "devDependencies": {
     "gh-pages": "^2.0.1",
     "prettier": "^1.17.1",
@@ -10,7 +9,6 @@
   },
   "dependencies": {
     "clipboard": "^2.0.4",
-    "github-fork-ribbon-css": "^0.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
@@ -33,7 +31,7 @@
       "last 1 safari version"
     ]
   },
-  "description": "Emoji Search ---",
+  "description": "Where Can I Watch ---",
   "main": "index.js",
   "author": ""
 }

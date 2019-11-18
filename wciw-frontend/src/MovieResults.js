@@ -23,9 +23,9 @@ export default class MovieResults extends PureComponent {
       <div className="component-emoji-results">
         {this.props.emojiData.map(emojiData => (
           <MovieResultRow
-            key={emojiData.title}
-            symbol={emojiData.symbol}
             title={emojiData.title}
+            poster={emojiData.poster}
+            websites={emojiData.websites}
           />
         ))}
       </div>
