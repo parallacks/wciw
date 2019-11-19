@@ -8,22 +8,27 @@ export default class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      //filteredEmoji: filterEmoji("", 20)
+      movieData: []
     };
   }
 
-  //handleSearchChange = event => {
-  //  this.setState({
-      //filteredEmoji: filterEmoji(event.target.value, 20)
-  //  });
-  //};
+  handleSearchChange = (event) => 
+  {
+	  
+	  if(event.key == 'Enter') {
+		this.setState({
+		  movieData: emojiList
+		});
+		console.log(event.target.value);
+	  }
+  };
 
   render() {
     return (
       <div>
         <Header />
         <SearchInput textChange={this.handleSearchChange} />
-        <MovieResults emojiData={emojiList} />
+        <MovieResults emojiData={this.state.movieData} />
       </div>
     );
   }
