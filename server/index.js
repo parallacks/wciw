@@ -2,9 +2,13 @@
 
 const express = require('express');
 
+const cors = require('cors');
+
 const app = express();
 
-const key = '639305f8ebc10c932cc333d6657ee8e9963db0c5'
+app.use(cors());
+
+//const key = 'bc25816285a8b6047de293e6b8656d3a151ce981'
 
 import guide_box_http from './guide-box/guide-box-api-http'
 
@@ -37,7 +41,7 @@ app.get('/api/search/:type/:query', (req, res) => {
     // let movie_ids = []
     let movie_data = []
     if(req.params.type === 'movie' || req.params.type === 'show'){
-        guide_box_http.api_movie_show_search(req.params.type, field, req.params.query)
+        guide_box_http.api_movie_show_search(req.params.type, field, req.params.query, precision)
         .then(response => {
             // console.log('here')
             // console.log(get_results(response))
@@ -90,38 +94,26 @@ app.get('/api/search/:type/:query', (req, res) => {
     }
 })
 
-function get_results(response){
-    
-}
-
-
-// let url = ["https://www.freecodecamp.org", "https://www.test.de/, http://www.test2.com"];
-//   let array = new Array;
-//   var fetches = [];
-//   for (let i = 0; i < url.length; i++) {
-//     console.log(url[i]);
-//     fetches.push(
-//       fetch(url[i])
-//       .then(res => {return res.text(); })
-//       .then(res => {
-//             let reg = /\<meta name="description" content\=\"(.+?)\"/;
-//             res = res.match(reg);
-//             array.push(res);
-//             console.log(res);
-//           }
-//       )
-//       .catch(status, err => {return console.log(status, err);})
-//     );
-//   }
-//   Promise.all(fetches).then(function() {
-//     console.log (array.length);
-//   });
-//   }
-
-
 app.get('/api', (req, res) =>{
     console.log("hit general");
-    res.send("Hey gurl");
+    let movie = [{
+		id: 122232,
+		title: 'Fake Movie',
+		poster: 'http://static-api.guidebox.com/thumbnails_movies/84740-5533508183-2395905582-9281617975-large-400x570.jpg',
+		free_android_sources:[],
+		subscription_android_services: [],
+		purchase_android_services: [
+			{
+				source: 'vudu',
+				link: 'vuduapp://7363',
+				app_name: 'VUDU',
+				app_require: 1,
+				app_link: 1,
+				app_download_link: 'https://play.google.com/store/apps/details?id=air.com.vudu.air.DownloaderTablet'
+			}
+		]
+	}]
+	res.send(movie);
 })
 
 /*

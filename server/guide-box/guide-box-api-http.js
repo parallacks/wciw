@@ -1,8 +1,8 @@
-const api_key = '639305f8ebc10c932cc333d6657ee8e9963db0c5'
+const api_key = 'bc25816285a8b6047de293e6b8656d3a151ce981'
 const fetch = require('node-fetch')
 
 module.exports = {
-    api_movie_show_search: function (type, field, query){
+    api_movie_show_search: function (type, field, query,precision){
         // return new Promise((resolve, reject)=>{
         //     request(url,{json:true},(err, res, body) =>{
         //         // console.log(api_key)
@@ -11,7 +11,7 @@ module.exports = {
         //         resolve(body)
         //     });api_key=${key}&
         // })
-        return fetch(`http://api-public.guidebox.com/v2/search?type=${type}&field=${field}&query=${query}`,{
+        return fetch(`http://api-public.guidebox.com/v2/search?type=${type}&field=${field}&query=${query}&precision=${precision}`,{
             method: 'GET',
             headers: {
                 Authorization: api_key
