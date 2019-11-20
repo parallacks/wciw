@@ -1,0 +1,13 @@
+.component-movie-result-row {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  height: auto;
+  position: relative;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.component-movie-result-row img {
+  width: 128px;
+  height: 128px;
+}
