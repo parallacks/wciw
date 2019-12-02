@@ -7,14 +7,21 @@ export default class MovieResultRow extends PureComponent {
 
   render() {
     return (
+	<div className='component-movie-result-row-background'>
 	<div className='component-movie-result-row'>
-	  <div className='rows'>
         <img alt={this.props.title} src={this.props.poster} />
+		<div className='component-results'>
 		<SearchResultList 
-            websites={this.props.websites}
+			websites={this.props.websites}
+			name="stream"
 		/>
-	  </div>
-    </div>
+		<SearchResultList
+			  websites={this.props.purchase}
+			  name="rent or purchase"
+		 />
+		 </div>
+	</div>
+	</div>
     );
   }
 }

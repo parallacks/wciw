@@ -7,25 +7,19 @@ import "./MovieResults.css";
 
 export default class MovieResults extends PureComponent {
   static propTypes = {
-    emojiData: PropTypes.array
+    movieData: PropTypes.array
   };
-
-  componentDidMount() {
-    this.clipboard = new Clipboard(".copy-to-clipboard");
-  }
-
-  componentWillUnmount() {
-    this.clipboard.destroy();
-  }
 
   render() {
     return (
-      <div className="component-emoji-results">
-        {this.props.emojiData.map(emojiData => (
+      <div className="component-movie-results">
+        {this.props.movieData.map( (movieData, i) => (
           <MovieResultRow
-            title={emojiData.title}
-            poster={emojiData.poster}
-            websites={emojiData.websites}
+		    key={i}
+            title={movieData.title}
+            poster={movieData.poster}
+            websites={movieData.websites}
+			purchase={movieData.purchase}
           />
         ))}
       </div>
