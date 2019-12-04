@@ -7,18 +7,6 @@ import sample from "./sample.json";
 import AdComponent from "./AdComponent.js";
 import AdSense from 'react-adsense';
 
-/*
-function readUrl(){
-	var qString = window.location.search.slice(1)
-	console.log(qString)
-	var obj = {};
-	if(qString) {
-		qString = qString.split('#')[0];
-		return params.get('q');
-	}
-	return ''
-}*/
-
 function getQuery(){
 	var params = new URLSearchParams(window.location.search)
 	console.log(window.location.href)
@@ -29,11 +17,6 @@ function getQuery(){
 	return ''
 }
 
-/**
- * Filter-map. Like map, but skips undefined values.
- *
- * @param callback
- */
 function fmap(callback) {
     return this.reduce((accum, ...args) => {
         let x = callback(...args);

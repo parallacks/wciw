@@ -1,0 +1,62 @@
+.component-search-input {
+  
+}
+
+.component-search-input > div {
+  margin: 0 10px 10px 10px;
+  width: 100%;
+}
+.component-search-input span {
+  display:table;
+  margin:0 auto;
+  width: 70%;
+}
+.component-search-input input {
+  
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: 1px solid #bbb;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 10px 10px 10px 18px;
+  width: 100%;
+  display: table-cell;
+}
+
+.component-search-input input:focus {
+  
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-sizing: border-box;
+  padding: 10px 10px 10px 18px;
+  width: 100%;
+  display: table-cell;
+  outline: none;
+}
+
+
+.component-search-input-button {
+	background-color:#44c767;
+	border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+	border:1px solid #18ab29;
+	box-sizing: border-box;
+	cursor:pointer;
+	display:table-cell;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:10px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+	width: 95px;
+}
+.component-search-input-button:hover {
+	background-color:#5cbf2a;
+}
+.component-search-input-button:active {
+	position:relative;
+	top:1px;
+}
