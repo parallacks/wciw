@@ -1,4 +1,4 @@
-const api_key = 'bc25816285a8b6047de293e6b8656d3a151ce981'
+const api_key = '7fb68486a8c8e20f7080122de300f1ea6dc630f8'
 const fetch = require('node-fetch')
 
 module.exports = {
