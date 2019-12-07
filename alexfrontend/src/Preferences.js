@@ -1,44 +1,56 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
+import ImageCheckBox from "./ImageCheckBox.js"
 
 export default class Preferences extends PureComponent {
   static propTypes = {
-    movieData: PropTypes.array
+    
   };
+  constructor(props)
+  {
+	super(props);
+	this.state = {
+      netflix: true,
+      hulu: true,
+      prime: true,
+      hbo: true,
+      vudu: true,
+      disney: true,
+      google: true,
+      youtube: true,
+      verizon: true,
+      itunes: true,
+      tubi: true,
+      fandango: true
+    };
+  }
 
   render() {
     return (
       <div>
-          <div style={{color: "white", float: "left", padding: "2vh"}}>
-            <label onClick={this.homeClicked} style={{padding: "3vh", color: "white", textDecoration: "none"}}>WCIW</label>
-          </div>
-          <div style={{color: "white", float: "right", padding: "2vh"}}>
-            <label onClick={this.preferencesClicked} style={{padding: "3vh", color: "white", textDecoration: "none"}}>Preferences</label>
-            <label onClick={this.loginClicked} style={{padding: "3vh", color: "white", textDecoration: "none"}}>Login</label>
-            <input onClick={this.signupClicked} type="submit" value="Sign Up" />
-          </div>
           <div style={{display: "flex", flexDirection: "column",
             position: 'absolute', left: '25%', top: '30%',
             width: '50%'
           }}>
             <label>Services</label>
             <div style={{display: "flex"}}>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.netflix} onChange={(e) => this.setState({netflix: e.target.checked})} style={{margin: "3vh"}}/>Netflix</label>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.hulu} onChange={(e) => this.setState({hulu: e.target.checked})} style={{margin: "3vh"}}/>Hulu</label>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.prime} onChange={(e) => this.setState({prime: e.target.checked})} style={{margin: "3vh"}}/>Amazon Prime</label>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.hbo} onChange={(e) => this.setState({hbo: e.target.checked})} style={{margin: "3vh"}}/>HBO</label>
+              <ImageCheckBox name="netflix" enabled={this.state.netflix} onClick={(e) => this.setState({netflix:!this.state.netflix})} />
+			  <ImageCheckBox name="disneyplus" enabled={this.state.disney} onClick={(e) => this.setState({disney:!this.state.disney})} />
+			  <ImageCheckBox name="hulu" enabled={this.state.hulu} onClick={(e) => this.setState({hulu:!this.state.hulu})} />
+			  <ImageCheckBox name="amazon" enabled={this.state.prime} onClick={(e) => this.setState({prime:!this.state.prime})} />
             </div>
             <div style={{display: "flex"}}>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.vudu} onChange={(e) => this.setState({vudu: e.target.checked})} style={{margin: "3vh"}}/>Vudu</label>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.disney} onChange={(e) => this.setState({disney: e.target.checked})} style={{margin: "3vh"}}/>Disney Plus</label>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.google} onChange={(e) => this.setState({google: e.target.checked})} style={{margin: "3vh"}}/>Google Play</label>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.youtube} onChange={(e) => this.setState({youtube: e.target.checked})} style={{margin: "3vh"}}/>Youtube</label>
+              <ImageCheckBox name="hbo" enabled={this.state.hbo} onClick={(e) => this.setState({hbo:!this.state.hbo})} />
+			  <ImageCheckBox name="vudu" enabled={this.state.vudu} onClick={(e) => this.setState({vudu:!this.state.vudu})} />
+			  <ImageCheckBox name="google play" enabled={this.state.google} onClick={(e) => this.setState({google:!this.state.google})} />
+			  <ImageCheckBox name="youtube" enabled={this.state.youtube} onClick={(e) => this.setState({youtube:!this.state.youtube})} />
             </div>
             <div style={{display: "flex"}}>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.verizon} onChange={(e) => this.setState({verizon: e.target.checked})} style={{margin: "3vh"}}/>Verizon On Demand</label>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.itunes} onChange={(e) => this.setState({itunes: e.target.checked})} style={{margin: "3vh"}}/>Itunes</label>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.tubi} onChange={(e) => this.setState({tubi: e.target.checked})} style={{margin: "3vh"}}/>Tubi TV</label>
-              <label style={{width: "25vh"}}><input type="checkbox" defaultChecked={this.state.fandango} onChange={(e) => this.setState({fandango: e.target.checked})} style={{margin: "3vh"}}/>Fandango</label>
+              <ImageCheckBox name="verizon on demand" enabled={this.state.verizon} onClick={(e) => this.setState({verizon:!this.state.verizon})} />
+	          <ImageCheckBox name="itunes" enabled={this.state.itunes} onClick={(e) => this.setState({itunes:!this.state.itunes})} />
+	          <ImageCheckBox name="tubi" enabled={this.state.tubi} onClick={(e) => this.setState({tubi:!this.state.tubi})} />
+			  <ImageCheckBox name="fandangonow" enabled={this.state.fandango} onClick={(e) => this.setState({fandango:!this.state.fandango})} />
+              
             </div>
             <input type="submit" value="Save" style={{marginLeft: "45vh", marginRight: "45vh", marginTop: "5vh"}} />
           </div>
