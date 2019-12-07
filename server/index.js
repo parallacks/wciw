@@ -6,11 +6,20 @@ const cors = require('cors');
 
 const app = express();
 
+const MongoClient = require('mongodb').MongoClient
+
+const url = 'mongodb://localhost:27017'
+const dbName = 'wciwDB'
+
+const assert = require('assert')
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 app.use(cors());
 
 //const key = '7fb68486a8c8e20f7080122de300f1ea6dc630f8'
 
 import guide_box_http from './guide-box/guide-box-api-http'
+import userDAO from './mongo-db/users'
 
 
 /*
@@ -117,6 +126,14 @@ app.get('/api', (req, res) =>{
 })
 
 /*
+ *
+ *
+ * Post /api/user
+ * Required body
+ *      
+
+
+/*
  * GET /api/shows
  * Optional filters:
  * channel: 
@@ -131,8 +148,41 @@ app.get('/api', (req, res) =>{
  *
  *  
 */
+app.post('/api/user', (req, res) => {
+    console.log(req.body)
+    
+    let response = userDAO.insert_user(req.body)
+    console.log(`got back with a ${response.code}`)
+    if (response.code == 200)
+        res.status(response.code).send(response.user)
+    else if (response.code == 500)
+        res.status(response.code).send('Sorry invalid data')
+    else
+        res.status(response.code).send("sorry something went wrong")
+})
 
+app.post('/api/user/login', (req, res) => {
+    console.log("hit user")
+    userDAO.login(req.body).then(user => {
+        console.log(user)
+        if (user == null)
+            res.status(403).send("Invalid login")
+        else    
+            res.status(200).send(user)
+    })
+    
+})
 
+app.post('/api/user/preferences', (req, res) => {
+    console.log('hit preferences')
+    userDAO.update_preferences(req.body).then(preferences => {
+        if(preferences == null)
+            res.status(403).send("Unable to update preferences")
+        else
+            res.status(200).send(preferences)
+    })
+
+})
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
