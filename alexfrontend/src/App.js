@@ -5,9 +5,10 @@ import MovieResults from "./MovieResults";
 import sample from "./sample.json";
 import Menu from "./Menu.js";
 import Main from "./Main.js";
+import { withCookies } from 'react-cookie';
 import './App.css'
 
-export default class App extends PureComponent {
+class App extends PureComponent {
   constructor(props)
   {
 	  super(props);
@@ -20,11 +21,12 @@ export default class App extends PureComponent {
 	return (
 	  <div className='App'>
 	    <div className='navMenu'>
-	      <Menu />
+	      <Menu cookies={this.props.cookies} />
 		</div>
-		<Main />
+		<Main cookies={this.props.cookies} />
 	  </div>
 	);
   }
 }
 
+export default withCookies(App);
