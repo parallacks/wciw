@@ -17,17 +17,17 @@ class App extends PureComponent {
   {
 	  super(props);
 	  
-	  const {cookies } = props;
+	  const {cookies} = props;
 	  
 	  this.state = {
-		  login: cookies.get('name') || '',
+		  userId: cookies.get('userId') || '',
 		  preference: []
 	  }
   }
   render() {
 	return (
 	  <div className='App'>
-	    <div className='navMenu'>
+	  	<div className='navMenu'>
 	      <Menu cookies={this.props.cookies} login={this.state.login} />
 		</div>
 		<Main cookies={this.props.cookies} login={this.state.login} preference={this.state.preference} />

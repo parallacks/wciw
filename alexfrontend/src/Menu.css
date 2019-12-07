@@ -1,12 +1,24 @@
 .component-menu{
-	color: "white"
+	color: white
 }
 
 .component-sign-up{
-   color: "inherit";
-   text-decoration: "none";
-   border: "1px solid #bbb";
-   padding: "5px";
-   border-radius : "10px";
-   box-sizing: 'border-box';
+   color: inherit;
+   text-decoration: none;
+   border: 1px solid #bbb;
+   padding: 5px;
+   border-radius : 10px;
+   box-sizing: border-box;
+}
+.component-logout{
+ 
+  display:table-cell;
+  color: inherit;
+  text-decoration: none;
+  text-align:center;
+  border: 1.5px solid #ffe;
+  padding: 3px;
+  border-radius : 10px;
+  box-sizing: border-box;
+  cursor:pointer;
 }

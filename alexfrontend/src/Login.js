@@ -1,14 +1,17 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { instanceOf } from 'prop-types';
 import './Login.css'
+import {Cookies} from 'react-cookie';
 export default class Login extends PureComponent {
   static propTypes = {
-    
+		cookies: instanceOf(Cookies).isRequired
   };
   
   constructor(props)
   {
 	super(props);
+	const { cookies } = props;
 	this.state = {
 		password: '',
 		name: ''
@@ -16,12 +19,15 @@ export default class Login extends PureComponent {
   }
   
   
-  onClick = event  =>
+  onClick(event)
   {
 	  //do login logic from server,
-	  console.log(this.state.password)
-	  console.log(this.state.name)
-	  //this.props.history.push("/");
+	  console.log(this.state.password);
+	  console.log(this.state.name);
+	  //
+	  const { cookies } = this.props;
+	  cookies.set('userId', this.state.name, { path: '/' });
+	  this.props.history.push("/");
   };
   
   render() {
@@ -35,7 +41,7 @@ export default class Login extends PureComponent {
             <input type="text" placeholder="Name" onChange={evt => this.updateNameValue(evt)} name='name' />
             <label>Password</label>
             <input type="password" placeholder="Password" onChange={evt => this.updatePasswordValue(evt)} name='password' />
-            <div className="component-login-button" onClick={this.onClick} >
+            <div className="component-login-button" onClick={this.onClick.bind(this)} >
 			Login
 		   </div>
           </div>

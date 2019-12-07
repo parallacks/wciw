@@ -12,9 +12,9 @@ export default class Main extends PureComponent {
 	{
     return (
 	    <Switch>
-		  <Route exact path='/' component={(props)=> <Home {...props}/>}></Route>
-		  <Route exact path='/login' component={(props)=> <Login {...props}/>}></Route>
-		  <Route exact path='/signup' component={(props)=> <SignUp {...props}/>}></Route>
+		  <Route exact path='/' component={(props)=> <Home {...props} cookies={this.props.cookies}/>}></Route>
+		  <Route exact path='/login' component={(props)=> <Login {...props} cookies={this.props.cookies} />}></Route>
+		  <Route exact path='/signup' component={(props)=> <SignUp {...props} cookies={this.props.cookies} />}></Route>
 	    </Switch>
 	  );
 	}
