@@ -5,15 +5,22 @@ import MovieResults from "./MovieResults";
 import sample from "./sample.json";
 import Menu from "./Menu.js";
 import Main from "./Main.js";
-import { withCookies } from 'react-cookie';
+import { withCookies, Cookies } from 'react-cookie';
 import './App.css'
+import { instanceOf } from 'prop-types';
 
 class App extends PureComponent {
+  static propTyps = {
+	  cookies: instanceOf(Cookies).isRequired
+  }
   constructor(props)
   {
 	  super(props);
+	  
+	  const {cookies } = props;
+	  
 	  this.state = {
-		  login: '',
+		  login: cookies.get('name') || '',
 		  preference: []
 	  }
   }
@@ -21,9 +28,9 @@ class App extends PureComponent {
 	return (
 	  <div className='App'>
 	    <div className='navMenu'>
-	      <Menu cookies={this.props.cookies} />
+	      <Menu cookies={this.props.cookies} login={this.state.login} />
 		</div>
-		<Main cookies={this.props.cookies} />
+		<Main cookies={this.props.cookies} login={this.state.login} preference={this.state.preference} />
 	  </div>
 	);
   }

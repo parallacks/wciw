@@ -1,0 +1,57 @@
+.component-login {
+	color: white;
+}
+
+.component-login input {
+  
+  border-radius: 20px;
+  border: 1px solid #bbb;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 10px 10px 10px 18px;
+  width: 100%;
+  display: table-cell;
+}
+
+.component-login input:focus {
+  
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+  box-sizing: border-box;
+  padding: 10px 10px 10px 18px;
+  width: 100%;
+  display: table-cell;
+  outline: none;
+}
+.component-login-button {
+	background-color:#44c767;
+	border-radius: 20px;
+	border:1px solid #18ab29;
+	box-sizing: border-box;
+	cursor:pointer;
+	display:table-cell;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:8px 12px;
+	margin-top:1vh;
+	margin-right:auto;
+	margin-left:auto;
+	text-align:center;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+	width: 95px;
+}
+.component-login-button:hover {
+	background-color:#5cbf2a;
+}
+
+.component-login-button:active {
+	position:relative;
+	top:1px;
+}
+.component-signup-retype {
+	font-size: 8;
+	color:red
+}
