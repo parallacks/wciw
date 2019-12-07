@@ -1,7 +1,5 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import MovieResultRow from "./MovieResultRow";
-import "./MovieResults.css";
 
 export default class Preferences extends PureComponent {
   static propTypes = {
