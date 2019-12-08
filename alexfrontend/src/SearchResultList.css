@@ -37,6 +37,7 @@
 
 .component-search-result-list-item img {
   padding-left: 0px;
+  color:inherit;
   display: block;
   margin-left: auto;
   margin-right: auto;

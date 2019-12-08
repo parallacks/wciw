@@ -6,6 +6,10 @@ import SearchResultList from "./SearchResultList.js"
 export default class MovieResultRow extends PureComponent {
 
   render() {
+	if(this.props.websites.length < 1 && this.props.purchase.length < 1 )
+	{
+	  return ( null );
+	}
     return (
 	<div className='component-movie-result-row-background'>
 	<div className='component-movie-result-row'>

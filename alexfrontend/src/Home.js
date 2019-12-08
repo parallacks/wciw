@@ -50,7 +50,8 @@ class Home extends React.Component {
 		{
 		
 		} else {
-	    const url = 'http://10.37.253.172:3000/api/search/movie/' + this.state.q + "?precision=fuzzy";
+	    //const url = 'http://10.37.253.172:3000/api/search/movie/' + this.state.q + "?precision=fuzzy";
+		const url = 'http://localhost:3001/api/search/movie/' + this.state.q + "?precision=fuzzy";
 		const proxyurl = 'https://cors-anywhere.herokuapp.com/'
 		//let response = await fetch(url)
 		//let data = await response.json()
@@ -59,6 +60,7 @@ class Home extends React.Component {
 		//fetch(url)
 		//.then(response => response.json())
 		//.then(data=> {
+			console.log(JSON.stringify(data, null, 2));
 		   var result = data.map(movie => (
 		   {
 		       poster: movie.poster_small,
@@ -83,19 +85,20 @@ class Home extends React.Component {
 			     name: item.display_name.toLowerCase(), 
 			     type: "$" + item.formats[0].price //we need a price
 			    } : undefined))
-		   }));
+		   })); 
 		   this.setState({movieData:result}); 
-		//}).catch( console.log("could not connect to server"));
+		   //this.setState({q:this.state.q});
+		//  }).catch( console.log("could not connect to server"));
         }
   }
   
   handleSearchChange = (event) => 
   {
 	  if(event.key == 'Enter') {
-		  
+		  //
 		  this.props.history.push( "?q=" + event.target.value );
-		  this.setState({q: event.target.value});
-		  this.componentDidMount();
+		  this.setState({q: event.target.value}, () => {this.componentDidMount()});
+		  //
 	  }	  
   };
   

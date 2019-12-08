@@ -1,5 +1,8 @@
-.component-menu{
-	color: white
+
+.component-menu {
+	color: white;
+	width:100%;
+	height:auto;
 }
 
 .component-sign-up{
@@ -9,10 +12,10 @@
    padding: 5px;
    border-radius : 10px;
    box-sizing: border-box;
+   
 }
 .component-logout{
- 
-  display:table-cell;
+  display:inline;
   color: inherit;
   text-decoration: none;
   text-align:center;
@@ -21,4 +24,5 @@
   border-radius : 10px;
   box-sizing: border-box;
   cursor:pointer;
+  
 }
