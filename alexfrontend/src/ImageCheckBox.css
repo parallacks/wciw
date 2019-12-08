@@ -42,5 +42,6 @@
   width: 64px;
   height: 64px;
   color: black;
+  opacity: 0.5;
   filter: grayscale(85%);
 }

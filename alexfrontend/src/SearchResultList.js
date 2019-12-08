@@ -11,7 +11,7 @@ export default class SearchResultList extends PureComponent {
 	{
 		return (null);
 	}
-	console.log(JSON.stringify(my_list, null, 2))
+	
     return (
       <div
         className="component-search-result-list"

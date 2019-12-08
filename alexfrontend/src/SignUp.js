@@ -27,8 +27,8 @@ export default class SignUp extends PureComponent {
 		//do login logic from server,
 		const { cookies } = this.props;
 	    cookies.set('userId', this.state.name, { path: '/' });
-		//when that is successful
-		this.props.history.push("/");
+		//when that is successful navigate to the preferences page
+		this.props.history.push("/preferences");
 	  }
 	  
   };

@@ -39,7 +39,7 @@ export default class Menu extends Component {
 			<Link to={{pathname:'/'}}  style={{padding: "3vh", color: "inherit", textDecoration: "none"}}>WCIW</Link>
 		  </div>
 		  <div className='rows' style={{display:'table', float: "right", padding: "2vh", color:"white"}}>
-			<Link to={{pathname:'/preference'}} style={{ padding: "3vh", color: "white", textDecoration: "none"}}>Preferences</Link>
+			<Link to={{pathname:'/preferences'}} style={{ padding: "3vh", color: "white", textDecoration: "none"}}>Preferences</Link>
 			<div className='component-logout' onClick={this.logOut.bind(this)}> LogOut </div>
 		  </div>
 	    </div>

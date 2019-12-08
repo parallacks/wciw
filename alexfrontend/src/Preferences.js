@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import ImageCheckBox from "./ImageCheckBox.js"
-
+import "./Preferences.css"
 export default class Preferences extends PureComponent {
   static propTypes = {
     
@@ -25,14 +25,19 @@ export default class Preferences extends PureComponent {
     };
   }
 
+  onClick(event)
+  {
+	  console.log('saved')
+  }
   render() {
     return (
       <div>
           <div style={{display: "flex", flexDirection: "column",
             position: 'absolute', left: '25%', top: '30%',
-            width: '50%'
+            width: '50%',
+			color: 'white'
           }}>
-            <label>Services</label>
+            <label style={{margin:'auto'}} >Preferred  Services</label>
             <div style={{display: "flex"}}>
               <ImageCheckBox name="netflix" enabled={this.state.netflix} onClick={(e) => this.setState({netflix:!this.state.netflix})} />
 			  <ImageCheckBox name="disneyplus" enabled={this.state.disney} onClick={(e) => this.setState({disney:!this.state.disney})} />
@@ -50,9 +55,10 @@ export default class Preferences extends PureComponent {
 	          <ImageCheckBox name="itunes" enabled={this.state.itunes} onClick={(e) => this.setState({itunes:!this.state.itunes})} />
 	          <ImageCheckBox name="tubi" enabled={this.state.tubi} onClick={(e) => this.setState({tubi:!this.state.tubi})} />
 			  <ImageCheckBox name="fandangonow" enabled={this.state.fandango} onClick={(e) => this.setState({fandango:!this.state.fandango})} />
-              
             </div>
-            <input type="submit" value="Save" style={{marginLeft: "45vh", marginRight: "45vh", marginTop: "5vh"}} />
+			<div className="component-preference-submit-button" onClick={this.onClick.bind(this)} >
+			Save
+		   </div>
           </div>
         </div>
     );
