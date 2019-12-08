@@ -25,6 +25,7 @@ export default class SignUp extends PureComponent {
 	  if(this.state.password1 == this.state.password2)
 	  {
 		//do login logic from server,
+		//if it is successful do the following
 		const { cookies } = this.props;
 	    cookies.set('userId', this.state.name, { path: '/' });
 		//when that is successful navigate to the preferences page

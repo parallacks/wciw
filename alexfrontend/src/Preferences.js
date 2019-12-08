@@ -9,6 +9,7 @@ export default class Preferences extends PureComponent {
   constructor(props)
   {
 	super(props);
+	//load the preferences somehow?
 	this.state = {
       netflix: true,
       hulu: true,
