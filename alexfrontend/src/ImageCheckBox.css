@@ -1,0 +1,47 @@
+.checkbox-enabled{
+	display: inline-block;
+	margin: auto;
+	position: relative;
+	height: 64px;
+	width: 64px;
+    padding: 5px;
+    cursor: pointer;
+	color: white;
+}
+.checkbox-disabled {
+	display: inline-block;
+	margin: auto;
+	position: relative;
+	height: 64px;
+	width: 64px;
+    padding: 5px;
+    cursor: pointer;
+	color: white;
+}
+
+.checkbox-enabled:hover
+{
+	background-color: #eee;
+}
+
+.checkbox-disabled:hover
+{
+	background-color: #eee;
+}
+
+.checkbox-enabled img {
+  margin: auto;
+  width: 64px;
+  height: 64px;
+  color: black;
+}
+
+
+.checkbox-disabled img {
+  margin: auto;
+  width: 64px;
+  height: 64px;
+  color: black;
+  opacity: 0.5;
+  filter: grayscale(85%);
+}

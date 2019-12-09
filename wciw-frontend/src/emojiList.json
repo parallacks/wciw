@@ -5,8 +5,9 @@
     "websites":
 	[
 	  {
-	    "link": "https://youtube.com",
-		"name": "youtube"
+	    "web_link": "https://youtube.com",
+		"name": "youtube",
+		"type": "free"
 	  }
 	]
   },
@@ -16,16 +17,19 @@
     "websites":
 	[
 	  {
-		"link": "https://amazon.com",
-		"name": "amazon"
+		"web_link": "https://amazon.com",
+		"name": "amazon",
+		"type": "$9.99"
 	  },
 	  {
-		"link": "https://netflix.com",
-		"name": "netflix"
+		"web_link": "https://netflix.com",
+		"name": "netflix",
+		"type": "sub"
 	  },
 	  {
-		"link": "https://hulu.com",
-		"name": "hulu"
+		"web_link": "https://hulu.com",
+		"name": "hulu",
+		"type": "sub"
 	  }
 	]
   },
@@ -35,16 +39,19 @@
     "websites":
 	[
 	  {
-		"link": "https://amazon.com",
-		"name": "amazon"
+		"web_link": "https://amazon.com",
+		"name": "amazon",
+		"type": "$9.99"
 	  },
 	  {
-		"link": "https://netflix.com",
-		"name": "netflix"
+		"web_link": "https://netflix.com",
+		"name": "netflix",
+		"type": "sub"
 	  },
 	  {
-		"link": "https://hulu.com",
-		"name": "hulu"
+		"web_link": "https://hulu.com",
+		"name": "hulu",
+		"type": "sub"
 	  }
 	]
   }
