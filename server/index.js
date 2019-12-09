@@ -21,6 +21,8 @@ app.use(cors());
 import guide_box_http from './guide-box/guide-box-api-http'
 import userDAO from './mongo-db/users'
 
+const terminator = require('./terminator_res.json')
+
 
 /*
  * GET /api/search
@@ -105,24 +107,8 @@ app.get('/api/search/:type/:query', (req, res) => {
 
 app.get('/api', (req, res) =>{
     console.log("hit general");
-    let movie = [{
-		id: 122232,
-		title: 'Fake Movie',
-		poster: 'http://static-api.guidebox.com/thumbnails_movies/84740-5533508183-2395905582-9281617975-large-400x570.jpg',
-		free_android_sources:[],
-		subscription_android_services: [],
-		purchase_android_services: [
-			{
-				source: 'vudu',
-				link: 'vuduapp://7363',
-				app_name: 'VUDU',
-				app_require: 1,
-				app_link: 1,
-				app_download_link: 'https://play.google.com/store/apps/details?id=air.com.vudu.air.DownloaderTablet'
-			}
-		]
-	}]
-	res.send(movie);
+   
+	res.send(terminator);
 })
 
 /*
